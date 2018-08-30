@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>home</title>
+</head>
+<body>
+<div class="">
+    <header>扫码验真伪首页</header>
+    <section class="">
+        <div>
+            <span>我的地址：</span><span>132165468789</span>
+            <span>我的名称：</span><span>***企业</span>
+        </div>
+        <div>
+            <button id="manageProduct">管理我的产品列表</button>
+            <button id="newProduct">生成新产品</button>
+        </div>
+    </section>
+</div>
+<!--<div>this is a home page</div>-->
+<!--<div class="container">-->
+    <!--<p>this is a container</p>-->
+    <!--<a href="/home/first/1">跳转到first</a>-->
+    <!--<input type="text" id="name" placeholder="请输入用户名">-->
+    <!--<input type="password" id="psd">-->
+    <!--<button id="homeBtn">提交</button>-->
+<!--</div>-->
+<!--<div style="border: 2px solid red">-->
+    <!--<input type="text" placeholder="用户名" id="regName">-->
+    <!--<input type="password" id="regPsd">-->
+    <!--<button id="regBtn">注册</button>-->
+<!--</div>-->
+</body>
+<!--<script src="/script/jquery.min.js"></script>-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/lodash.js/4.17.10/lodash.core.min.js"></script>
+<script type="text/javascript">
+
+    let users = [
+        { 'user': 'barney', 'age': 36 },
+        { 'user': 'fred', 'age': 40 },
+        { 'user': 'pebbles', 'age': 18 }
+    ];
+    let nums = [1, 2, 3];
+
+    var names = _
+        .chain(users)
+        .map(function (o) {
+            return o.user;
+        })
+        .join(",")
+        .value();
+    console.log(names);
+
+
+    let btn = document.getElementById('homeBtn');
+//    btn.addEventListener('click',()=>{
+//        let name = $('#name').val();
+//        let psd = $('#psd').val();
+//        if(!name) {
+//            alert('请输入用户名');
+//            return;
+//        }
+//        if(!psd){
+//            alert('请输入密码');
+//            return;
+//        }
+//        $.ajax({
+//            url:'home/second',
+//            method:'POST',
+//            data:{
+//                'name':name,
+//                'psd':psd,
+//            },
+//            success:function (res) {
+//                console.log(res)
+//            },
+//            error:function (err) {
+//                console.log(err)
+//            }
+//        })
+//    })
+    $('#regBtn').click(function () {
+        let name = $('#regName').val();
+        let psd = $('#regPsd').val();
+        if(!name) {
+            alert('请输入用户名');
+            return;
+        }
+        if(!psd){
+            alert('请输入密码');
+            return;
+        }
+        $.ajax({
+            url:'home/third',
+            method:'POST',
+            data:{
+                'name':name,
+                'psd':psd,
+            },
+            success:function (res) {
+                if(res.data.status){
+                    console.log('reg:'+ res.data.message)
+                }else {
+                    console.log('notReg'+ res.data.message)
+                }
+
+            },
+            error:function (err) {
+                console.log('regErr'+err)
+            }
+        })
+    })
+    $('#newProduct').click(function () {
+        window.location.href = '/home/add'
+    })
+</script>
+</html>
