@@ -5,7 +5,7 @@ const rpc  = require('node-bitcoin-rpc');
 const rpcTest = require('../config/rpc')
 
 // rpc.init('192.168.18.131',18211,'wh03','gnZGUMoSuey3xP_j20ca7fZudX4wpDY7R8wLYd50XlA=');
-rpc.init('127.0.0.1',18213,'code','BwixPn-bU_lBRqBJEpoSyvJfHIRRgMVelcnhpTn5weM=');
+rpc.init('127.0.0.1',18211,'main','0FAiMaHryQOH-7zNO4CbrsfkN2-D8Z0KTHC3JqOyhOs=');
 // const iconv = require('iconv-lite');
 // const exec = require('child_process').exec;
 // const parse = require('curl-to-fetch');
