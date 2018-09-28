@@ -115,9 +115,9 @@ exports.listAccounts   = async function (btcAddress,message) {
         })
     })
 };
-exports.sendToAddress =  function (address) {
+exports.sendToAddress =  function (address,assetId) {
     return new Promise((resolve,reject) => {
-        rpc.call('sendtoaddress',[address,'100001:1'],function (err, info) {
+        rpc.call('sendtoaddress',[address,assetId],function (err, info) {
             if(err){
                 console.error('sendError' + err)
                 reject (err);
