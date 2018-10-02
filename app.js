@@ -6,13 +6,14 @@ const path = require('path');
 const bodyParser = require('koa-bodyparser');
 const app = new Koa();
 const ora = require('ora');
-const spinner = ora('Loading unicorns').start();
+// const spinner = ora('Loading unicorns').start();
 const myCipher = require('./util/cipher');
 const myRandom = require('./util/myRandom');
-setTimeout(() => {
-    spinner.color = 'red';
-    spinner.text = 'Loading rainbows';
-},3000);
+const scheduleProject = require('./config/scheduleProject');
+// setTimeout(() => {
+//     spinner.color = 'red';
+//     spinner.text = 'Loading rainbows';
+// },3000);
 
 app.use(bodyParser());
 // app.use(async (ctx)=>{
@@ -29,5 +30,6 @@ app.listen('3001',()=> {
     // myRandom(100000,5).then(result=>{
     //     console.log(result)
     // })//随机数
+    scheduleProject.createCode();
     console.log('正在监听'+ 3001)
 });
