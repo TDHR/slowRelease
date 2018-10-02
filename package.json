@@ -28,6 +28,7 @@
     "mysql": "^2.16.0",
     "node-bitcoin-rpc": "^1.1.3",
     "node-xss": "0.0.1",
+    "node-schedule": "^1.3.0",
     "ora": "^3.0.0",
     "reits-rpc": "^0.7.0",
     "superagent": "^3.8.3",

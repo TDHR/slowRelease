@@ -86,5 +86,29 @@
     "projectName":"测试衣服厂商",
     "firstLevelAddress":"17JBiPFHYngdGVRp8wvgvnKGMYj6ggBS1W",
     "assetID":"0:1"
+  },
+  "1MDfA3XBZM5SMsuyyR23ZmGBQk9HCGmwV4":{
+    "name":"B03外套",
+    "description":"M码,蓝色",
+    "url":"/images/codeTest/waitao.jpg",
+    "projectName":"测试衣服厂商",
+    "firstLevelAddress":"17JBiPFHYngdGVRp8wvgvnKGMYj6ggBS1W",
+    "assetID":"0:1"
+  },
+  "185Q5poNDgNzQkz3wzcRaSoNerf7naKBzY":{
+    "name":"E06牛仔裤",
+    "description":"L码,蓝色",
+    "url":"/images/codeTest/kuzi.jpg",
+    "projectName":"测试衣服厂商",
+    "firstLevelAddress":"17JBiPFHYngdGVRp8wvgvnKGMYj6ggBS1W",
+    "assetID":"100001:1"
+  },
+  "1CUKmu8xg5AYetwLWvebkA1sQVoymfTZw7":{
+    "name":"C04袜子",
+    "description":"L码,蓝色",
+    "url":"/images/codeTest/wazi.jpg",
+    "projectName":"测试衣服厂商",
+    "firstLevelAddress":"17JBiPFHYngdGVRp8wvgvnKGMYj6ggBS1W",
+    "assetID":"100003:1"
   }
 }
