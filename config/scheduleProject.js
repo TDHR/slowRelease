@@ -8,7 +8,7 @@ let rule = new schedule.RecurrenceRule();
 exports.createCode =async function() {
 
     // var date = new Date(2018, 10, 1, 17, 45, 0);
-    rule.second = [0,30];
+    rule.second = [0,15,30,45];
 
 
     let j = schedule.scheduleJob(rule,function () {
