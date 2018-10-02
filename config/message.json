@@ -110,5 +110,9 @@
     "projectName":"测试衣服厂商",
     "firstLevelAddress":"17JBiPFHYngdGVRp8wvgvnKGMYj6ggBS1W",
     "assetID":"100003:1"
+  },
+  "16nTo9eyf3gGSVTbyobYkaWBZzGEKpa3XU":{
+    "assetID":"100001:1",
+    "name":"中转地址"
   }
 }
