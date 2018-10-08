@@ -7,7 +7,7 @@ exports.index = async (ctx)=> {
     let address = params.address;
     let productAddress = params.productAddress;
     let assetId = addressMessage[productAddress].assetID;
-    if(!assetId){
+    if(!assetId || productAddress === '16nTo9eyf3gGSVTbyobYkaWBZzGEKpa3XU'){
         assetId = "100001:1"
     }
     // console.log(address);
