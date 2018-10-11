@@ -114,5 +114,9 @@
   "16nTo9eyf3gGSVTbyobYkaWBZzGEKpa3XU":{
     "assetID":"100001:1",
     "name":"中转地址"
+  },
+  "1HDAid4sJBqGsraxrfCHw5wyPXzCkj9ztB":{
+    "assetID":"100006:1",
+    "name":"闪码币储存地址"
   }
 }
