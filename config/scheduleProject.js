@@ -2,7 +2,8 @@
 const p = require('./db');
 const rpcMethod = require('../rpc/index');
 let  schedule = require('node-schedule');
-let addressList = ['1MDfA3XBZM5SMsuyyR23ZmGBQk9HCGmwV4','185Q5poNDgNzQkz3wzcRaSoNerf7naKBzY','1CUKmu8xg5AYetwLWvebkA1sQVoymfTZw7','187Xpykh4XDqUPBsoiafqpABfV8Fhct51Y'];
+// let addressList = ['1MDfA3XBZM5SMsuyyR23ZmGBQk9HCGmwV4','185Q5poNDgNzQkz3wzcRaSoNerf7naKBzY','1CUKmu8xg5AYetwLWvebkA1sQVoymfTZw7','187Xpykh4XDqUPBsoiafqpABfV8Fhct51Y'];
+let addressList = ['187Xpykh4XDqUPBsoiafqpABfV8Fhct51Y'];
 
 let rule = new schedule.RecurrenceRule();
 exports.createCode =async function() {
