@@ -2,15 +2,15 @@
 const p = require('./db');
 const rpcMethod = require('../rpc/index');
 let  schedule = require('node-schedule');
-// let addressList = ['1MDfA3XBZM5SMsuyyR23ZmGBQk9HCGmwV4','185Q5poNDgNzQkz3wzcRaSoNerf7naKBzY','1CUKmu8xg5AYetwLWvebkA1sQVoymfTZw7','187Xpykh4XDqUPBsoiafqpABfV8Fhct51Y'];
-let addressList = ['187Xpykh4XDqUPBsoiafqpABfV8Fhct51Y'];
+let addressList = ['1MDfA3XBZM5SMsuyyR23ZmGBQk9HCGmwV4','185Q5poNDgNzQkz3wzcRaSoNerf7naKBzY','1CUKmu8xg5AYetwLWvebkA1sQVoymfTZw7'];
+// let addressList = ['187Xpykh4XDqUPBsoiafqpABfV8Fhct51Y'];
 
 let rule = new schedule.RecurrenceRule();
 exports.createCode =async function() {
 
     // var date = new Date(2018, 10, 1, 17, 45, 0);
-    // rule.second = [0,15,30,45];
-    rule.second = [0,5,10,15,20,25,30,35,40,45,50,55];
+    rule.second = [0,15,30,45];
+    // rule.second = [0,5,10,15,20,25,30,35,40,45,50,55];
 
     let j = schedule.scheduleJob(rule,function () {
         initData();
@@ -27,11 +27,11 @@ async function initData() {
     let singMessage  =await getSignMessage(address,originMessage);//获取签名信息；
     // console .log(singMessage)
     let  data = {address:address,originMessage:originMessage,signMessage:singMessage,codeId:now};
-    if(address === '187Xpykh4XDqUPBsoiafqpABfV8Fhct51Y') {
-        insertCodeTmp(data)
-    }else {
+    // if(address === '187Xpykh4XDqUPBsoiafqpABfV8Fhct51Y') {
+    //     insertCodeTmp(data)
+    // }else {
         insertCode(data)
-    }
+    // }
 
 
 }
