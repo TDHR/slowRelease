@@ -12,7 +12,9 @@ exports.index = async (ctx)=> {
     // let assetId = addressMessage[productAddress].assetID;
     let assetId = reward.result;
     if(amount){
-        assetId = `100006:${amount}`;
+        // assetId = `100006:${amount}`;
+        console.log('amount'+amount);
+        assetId = `100006:2`;
     }
     if(!assetId || productAddress === '16nTo9eyf3gGSVTbyobYkaWBZzGEKpa3XU'){
         assetId = "100001:1"
