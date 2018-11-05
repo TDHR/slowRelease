@@ -6,10 +6,14 @@ exports.index = async (ctx)=> {
     let params = ctx.request.body;
     // console.log(params);
     let address = params.address;
+    let amount = params.amount;
     let productAddress = params.productAddress;
     let reward = await queryProductMessage(productAddress);//查询此地址应当打多少个币
     // let assetId = addressMessage[productAddress].assetID;
     let assetId = reward.result;
+    if(amount){
+        assetId = `100006:${amount}`;
+    }
     if(!assetId || productAddress === '16nTo9eyf3gGSVTbyobYkaWBZzGEKpa3XU'){
         assetId = "100001:1"
     }
