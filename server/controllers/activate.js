@@ -59,3 +59,17 @@ const queryProductMessage = function (productAddress) {
     });
 
 };
+//返回签名信息接口
+exports.signMessage = async function (ctx) {
+    let originMessage = ctx.request.body.originMessage;//信息
+    let originSignMessage = `id:${originMessage}`;//需要签名的信息
+    let address = ctx.request.body.address;//签名地址
+    let message = await rpcMethod.signmessage(address,originSignMessage);
+    let url = 'https://reitschain.com/co';
+    let codeMessage = `s=${message}&o=${originSignMessage}&id=${originMessage}&a=${address}`;
+    let responseMessage = `${url}?${codeMessage}`;
+    ctx.body = {
+        success:true,
+        codeMessage:responseMessage
+    }
+};
