@@ -14,7 +14,7 @@ exports.index = async (ctx)=> {
     if(amount){
         // assetId = `100006:${amount}`;
         console.log('amount'+amount);
-        assetId = `100006:2`;
+        assetId = `100006:${amount}`;
     }
     if(!assetId || productAddress === '16nTo9eyf3gGSVTbyobYkaWBZzGEKpa3XU'){
         assetId = "100001:1"
