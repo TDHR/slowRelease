@@ -27,7 +27,7 @@ exports.index = async (ctx)=> {
     let myAddress = await rpcMethod.getAddr();//获取项目地址
     //还应该再去验证传过来的产品地址是否属于当前项目地址，测试阶段省去这一步
     let txData = await rpcMethod.sendToAddress(address,assetId);
-    // console.log(txID)
+    console.log('交易信息'+JSON.stringify(txID));
     ctx.body = {
         success:true,
         txData:txData,
