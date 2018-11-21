@@ -20,6 +20,7 @@ exports.index = async (ctx)=> {
     let reward = await queryProductMessage(productAddress);//查询此地址应当打多少个币
     // let assetId = addressMessage[productAddress].assetID;
     let assetId = reward.result;
+    console.log('交易ID'+assetId);
     if(amount){
         // assetId = `100006:${amount}`;
         console.log('amount'+amount);
