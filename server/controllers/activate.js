@@ -1,13 +1,22 @@
 const rpcMethod = require('../../rpc/index');
 const p = require('../../config/db');
+const querystring = require('querystring');
 const addressMessage = require('../../config/message.json');
+//获取url参数
+const getUrlParam = (url) => {
+    //req.url
+    var params = url.split('?')[1];
+    var paramsJson = querystring.parse(params);
 
+    return paramsJson;
+};
 exports.index = async (ctx)=> {
-    let params = ctx.request.body;
+    let params = getUrlParam(ctx.url);
     // console.log(params);
     let address = params.address;
     let amount = params.amount;
     let productAddress = params.productAddress;
+
     let reward = await queryProductMessage(productAddress);//查询此地址应当打多少个币
     // let assetId = addressMessage[productAddress].assetID;
     let assetId = reward.result;
