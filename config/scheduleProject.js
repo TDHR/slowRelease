@@ -42,7 +42,10 @@ async function insertCode(data) {
     return new Promise((resolve,reject) => {
         let sql = `insert into code_message (address,originMessage,signMessage) values('${data.address}','${data.originMessage}','${data.signMessage}'`;
         p.query(sql,function (error,results,fields) {
-            if(error) reject(error);
+            if(error) {
+                console.log(JSON.stringify(error))
+                reject(error);
+            }
             else {
                 console.log('插入成功');
                 resolve({
