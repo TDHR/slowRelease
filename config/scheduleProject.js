@@ -26,7 +26,7 @@ async function initData() {
     let originMessage = `id:${now}`;
     let singMessage  =await getSignMessage(address,originMessage);//获取签名信息；
     // console .log(singMessage)
-    let  data = {address:address,originMessage:originMessage,signMessage:singMessage,codeId:now};
+    let  data = {address:address,originMessage:originMessage,signMessage:singMessage};
     // if(address === '187Xpykh4XDqUPBsoiafqpABfV8Fhct51Y') {
     //     insertCodeTmp(data)
     // }else {
@@ -40,7 +40,7 @@ async function insertCode(data) {
     //s=HweOKK2CcM1vCDtAm6/Mg5hN2YzX+F1zCh3XnBein57xfoiF7UemhSlnzzWDr9w/pBaHrZBo1XzPS05NV/PJ948=&o=id:18419&id=18419&a=1BtvWKc9bdReVcP74WngsmuRiJrkjUiBNc
 
     return new Promise((resolve,reject) => {
-        let sql = `insert into code_message (address,originMessage,signMessage,codeId) values('${data.address}','${data.originMessage}','${data.signMessage}',${data.codeId})`;
+        let sql = `insert into code_message (address,originMessage,signMessage) values('${data.address}','${data.originMessage}','${data.signMessage}'`;
         p.query(sql,function (error,results,fields) {
             if(error) reject(error);
             else {
