@@ -40,7 +40,7 @@ async function insertCode(data) {
     //s=HweOKK2CcM1vCDtAm6/Mg5hN2YzX+F1zCh3XnBein57xfoiF7UemhSlnzzWDr9w/pBaHrZBo1XzPS05NV/PJ948=&o=id:18419&id=18419&a=1BtvWKc9bdReVcP74WngsmuRiJrkjUiBNc
 
     return new Promise((resolve,reject) => {
-        let sql = `insert into code_message (address,originMessage,signMessage) values('${data.address}','${data.originMessage}','${data.signMessage}'`;
+        let sql = `insert into code_message (address,originMessage,signMessage) values('${data.address}','${data.originMessage}','${data.signMessage}')`;
         p.query(sql,function (error,results,fields) {
             if(error) {
                 console.log(JSON.stringify(error))
