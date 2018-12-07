@@ -87,7 +87,7 @@ exports.releaseToken = async function () {
        // var date = new Date(2018, 10, 1, 17, 45, 0);
     rule.hour = [11];
     // rule.second = [0,5,10,15,20,25,30,35,40,45,50,55];
-    rule.minute = [44];
+    rule.minute = [46];
     rule.second = [0];
     let j = schedule.scheduleJob(rule,function () {
         console.log('开始任务');
@@ -135,6 +135,7 @@ const sendMessage = async function (message) {
       })
       .end(function (err, result) {
           if(err){
+              console.log(JSON.stringify(err));
               console.error('任务失败');
           }else {
               console.log('任务成功');
