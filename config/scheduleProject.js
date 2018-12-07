@@ -85,9 +85,9 @@ async function insertCodeTmp(data) {
 //====================INU活动每天释放一定比例的INU==========
 exports.releaseToken = async function () {
        // var date = new Date(2018, 10, 1, 17, 45, 0);
-    rule.hour = [12];
+    rule.hour = [14];
     // rule.second = [0,5,10,15,20,25,30,35,40,45,50,55];
-    rule.minute = [42];
+    rule.minute = [0];
     rule.second = [0];
     let j = schedule.scheduleJob(rule,function () {
         console.log('开始任务');
@@ -105,7 +105,7 @@ const queryInuActivityUser = async function () {
         let querySql = `SELECT openid,nickname,total FROM (
     SELECT tmp.user AS USER,total FROM (
     SELECT USER FROM codetx WHERE productAddress = '1FKi8SiEWY8TRsChyS9jzGMGbSZoaVB1S3' GROUP BY USER ) tmp 
-    LEFT JOIN (SELECT SUM(token_number) total  ,USER FROM codetx WHERE productAddress='1128vJVeStnBo3D9eZrZkhqmUfvpbyNLzq') ms ON tmp.user=ms.user) msg
+    LEFT JOIN (SELECT SUM(token_number) total  ,USER FROM codetx WHERE productAddress='1FKi8SiEWY8TRsChyS9jzGMGbSZoaVB1S3') ms ON tmp.user=ms.user) msg
     LEFT JOIN wechat_user wu ON msg.user=wu.openid WHERE msg.total<30000 OR msg.total IS NULL`;
         p.query(querySql,function (error, result) {
             if(error){
