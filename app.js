@@ -6,9 +6,7 @@ const path = require('path');
 const bodyParser = require('koa-bodyparser');
 const app = new Koa();
 const ora = require('ora');
-// const spinner = ora('Loading unicorns').start();
-const myCipher = require('./util/cipher');
-const myRandom = require('./util/myRandom');
+
 const scheduleProject = require('./config/scheduleProject');
 // setTimeout(() => {
 //     spinner.color = 'red';
@@ -31,6 +29,6 @@ app.listen('3001',()=> {
     //     console.log(result)
     // })//随机数
     //定时任务
-    scheduleProject.createCode();
+    scheduleProject.releaseToken();
     console.log('正在监听'+ 3001)
 });

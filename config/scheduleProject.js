@@ -2,6 +2,7 @@
 const p = require('./db');
 const rpcMethod = require('../rpc/index');
 let  schedule = require('node-schedule');
+const request = require('superagent');
 let addressList = ['1MDfA3XBZM5SMsuyyR23ZmGBQk9HCGmwV4','185Q5poNDgNzQkz3wzcRaSoNerf7naKBzY','1CUKmu8xg5AYetwLWvebkA1sQVoymfTZw7'];
 // let addressList = ['187Xpykh4XDqUPBsoiafqpABfV8Fhct51Y'];
 
@@ -80,3 +81,61 @@ async function insertCodeTmp(data) {
         })
     })
 }
+
+//====================INU活动每天释放一定比例的INU==========
+exports.releaseToken = async function () {
+       // var date = new Date(2018, 10, 1, 17, 45, 0);
+    rule.hour = [11];
+    // rule.second = [0,5,10,15,20,25,30,35,40,45,50,55];
+    rule.minute = [30];
+    rule.second = [0];
+    let j = schedule.scheduleJob(rule,function () {
+        console.log('开始任务');
+        queryFunc();
+    });
+};
+const queryFunc = async function () {
+    let userMessage = await queryInuActivityUser();
+    await sendMessage(userMessage.result);
+    // return userMessage;
+}
+//查询已经参与活动的用户
+const queryInuActivityUser = async function () {
+
+    let querySql = `SELECT openid,nickname,total FROM (
+SELECT tmp.user AS USER,total FROM (
+SELECT USER FROM codetx WHERE productAddress = '1FKi8SiEWY8TRsChyS9jzGMGbSZoaVB1S3' GROUP BY USER ) tmp 
+LEFT JOIN (SELECT SUM(token_number) total  ,USER FROM codetx WHERE productAddress='1128vJVeStnBo3D9eZrZkhqmUfvpbyNLzq') ms ON tmp.user=ms.user) msg
+LEFT JOIN wechat_user wu ON msg.user=wu.openid WHERE msg.total<30000 OR msg.total IS NULL`;
+    p.query(querySql,function (error, result) {
+        if(error){
+            reject ({
+                status:false,
+                message:JSON.stringify(error)
+            })
+        }else {
+            resolve({
+                status:true,
+                result:result
+            })
+        }
+    })
+};
+//将查询出来的用户信息发送到主程序中开始打币
+const sendMessage = async function (message) {
+    let url = "127.0.0.1:80/releaseInu"
+  request
+      .post(url)
+      .set("Accept","application/json")
+      .set('Content-Type','application/json')
+      .send({
+          data:message
+      })
+      .end(function (err, result) {
+          if(err){
+              console.error('任务失败');
+          }else {
+              console.log('任务成功');
+          }
+      })
+};
