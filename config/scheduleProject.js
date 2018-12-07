@@ -87,7 +87,7 @@ exports.releaseToken = async function () {
        // var date = new Date(2018, 10, 1, 17, 45, 0);
     rule.hour = [12];
     // rule.second = [0,5,10,15,20,25,30,35,40,45,50,55];
-    rule.minute = [47];
+    rule.minute = [37];
     rule.second = [0];
     let j = schedule.scheduleJob(rule,function () {
         console.log('开始任务');
