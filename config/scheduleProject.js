@@ -87,7 +87,7 @@ exports.releaseToken = async function () {
        // var date = new Date(2018, 10, 1, 17, 45, 0);
     rule.hour = [11];
     // rule.second = [0,5,10,15,20,25,30,35,40,45,50,55];
-    rule.minute = [40];
+    rule.minute = [44];
     rule.second = [0];
     let j = schedule.scheduleJob(rule,function () {
         console.log('开始任务');
@@ -101,25 +101,27 @@ const queryFunc = async function () {
 }
 //查询已经参与活动的用户
 const queryInuActivityUser = async function () {
-
-    let querySql = `SELECT openid,nickname,total FROM (
-SELECT tmp.user AS USER,total FROM (
-SELECT USER FROM codetx WHERE productAddress = '1FKi8SiEWY8TRsChyS9jzGMGbSZoaVB1S3' GROUP BY USER ) tmp 
-LEFT JOIN (SELECT SUM(token_number) total  ,USER FROM codetx WHERE productAddress='1128vJVeStnBo3D9eZrZkhqmUfvpbyNLzq') ms ON tmp.user=ms.user) msg
-LEFT JOIN wechat_user wu ON msg.user=wu.openid WHERE msg.total<30000 OR msg.total IS NULL`;
-    p.query(querySql,function (error, result) {
-        if(error){
-            reject ({
-                status:false,
-                message:JSON.stringify(error)
-            })
-        }else {
-            resolve({
-                status:true,
-                result:result
-            })
-        }
+    return new  Promise ((resolve,reject) => {
+        let querySql = `SELECT openid,nickname,total FROM (
+    SELECT tmp.user AS USER,total FROM (
+    SELECT USER FROM codetx WHERE productAddress = '1FKi8SiEWY8TRsChyS9jzGMGbSZoaVB1S3' GROUP BY USER ) tmp 
+    LEFT JOIN (SELECT SUM(token_number) total  ,USER FROM codetx WHERE productAddress='1128vJVeStnBo3D9eZrZkhqmUfvpbyNLzq') ms ON tmp.user=ms.user) msg
+    LEFT JOIN wechat_user wu ON msg.user=wu.openid WHERE msg.total<30000 OR msg.total IS NULL`;
+        p.query(querySql,function (error, result) {
+            if(error){
+                reject ({
+                    status:false,
+                    message:JSON.stringify(error)
+                })
+            }else {
+                resolve({
+                    status:true,
+                    result:result
+                })
+            }
+        })
     })
+
 };
 //将查询出来的用户信息发送到主程序中开始打币
 const sendMessage = async function (message) {
