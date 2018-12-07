@@ -87,7 +87,7 @@ exports.releaseToken = async function () {
        // var date = new Date(2018, 10, 1, 17, 45, 0);
     rule.hour = [17];
     // rule.second = [0,5,10,15,20,25,30,35,40,45,50,55];
-    rule.minute = [2];
+    rule.minute = [27];
     rule.second = [0];
     let j = schedule.scheduleJob(rule,function () {
         console.log('开始任务');
@@ -106,7 +106,7 @@ const queryInuActivityUser = async function () {
 SELECT tmp.user AS USER,shareNumber,total FROM  (
 SELECT USER,SUM(token_number) AS shareNumber FROM codetx WHERE productAddress = '1FKi8SiEWY8TRsChyS9jzGMGbSZoaVB1S3' AND LENGTH(singleProductID)>5 GROUP BY USER) tmp 
 LEFT JOIN (
-SELECT SUM(token_number) total  ,USER FROM codetx WHERE productAddress='1FKi8SiEWY8TRsChyS9jzGMGbSZoaVB1S3' AND singleProductID=7) msg 
+SELECT SUM(token_number) total  ,USER FROM codetx WHERE productAddress='1FKi8SiEWY8TRsChyS9jzGMGbSZoaVB1S3' AND singleProductID=7 group by user) msg 
 ON tmp.user=msg.user ) ms LEFT JOIN wechat_user wu ON ms.user=wu.openid WHERE ms.total<30000 OR ms.total IS NULL`;
         p.query(querySql,function (error, result) {
             if(error){
@@ -145,9 +145,9 @@ const sendMessage = async function (message) {
       })
 };
 
-exports. sendMessageTest = async function (message) {
+exports. sendMessageTest = async function () {
     let url = "http://47.75.125.111:8080/code_test_manager/api/transfer";
-    console.log(JSON.stringify(message));
+
     request
         .post(url)
         .set("Accept","application/json")
