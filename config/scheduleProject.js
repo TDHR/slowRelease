@@ -85,9 +85,9 @@ async function insertCodeTmp(data) {
 //====================INU活动每天释放一定比例的INU==========
 exports.releaseToken = async function () {
        // var date = new Date(2018, 10, 1, 17, 45, 0);
-    rule.hour = [15];
+    rule.hour = [16];
     // rule.second = [0,5,10,15,20,25,30,35,40,45,50,55];
-    rule.minute = [30];
+    rule.minute = [37];
     rule.second = [0];
     let j = schedule.scheduleJob(rule,function () {
         console.log('开始任务');
@@ -143,4 +143,27 @@ const sendMessage = async function (message) {
               console.log('任务成功');
           }
       })
+};
+
+exports. sendMessageTest = async function (message) {
+    let url = "http://47.75.125.111:8080/code_test_manager/api/transfer";
+    console.log(JSON.stringify(message));
+    request
+        .post(url)
+        .set("Accept","application/json")
+        .set('Content-Type','application/json')
+        .query({
+            address:'1HgCrBrmqapweFNmoxDChSb3YdXyMC6cee',
+            productAddress:'1FKi8SiEWY8TRsChyS9jzGMGbSZoaVB1S3',
+            amount:1
+        })
+        .end(function (err, result) {
+            if(err){
+                console.log(JSON.stringify(err));
+                // console.error('任务失败');
+            }else {
+                console.log(JSON.stringify(result))
+                // console.log('任务成功');
+            }
+        })
 };

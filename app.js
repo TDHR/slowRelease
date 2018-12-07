@@ -29,6 +29,7 @@ app.listen('3002',()=> {
     //     console.log(result)
     // })//随机数
     //定时任务
+    // scheduleProject.sendMessageTest();
     scheduleProject.releaseToken();
     console.log('正在监听'+ 3002)
 });
