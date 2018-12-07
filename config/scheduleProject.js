@@ -85,9 +85,9 @@ async function insertCodeTmp(data) {
 //====================INU活动每天释放一定比例的INU==========
 exports.releaseToken = async function () {
        // var date = new Date(2018, 10, 1, 17, 45, 0);
-    rule.hour = [11];
+    rule.hour = [12];
     // rule.second = [0,5,10,15,20,25,30,35,40,45,50,55];
-    rule.minute = [46];
+    rule.minute = [47];
     rule.second = [0];
     let j = schedule.scheduleJob(rule,function () {
         console.log('开始任务');
@@ -125,7 +125,8 @@ const queryInuActivityUser = async function () {
 };
 //将查询出来的用户信息发送到主程序中开始打币
 const sendMessage = async function (message) {
-    let url = "127.0.0.1:80/releaseInu"
+    let url = "https://www.reitschain.com/releaseInu";
+    console.log(JSON.stringify(message));
   request
       .post(url)
       .set("Accept","application/json")
