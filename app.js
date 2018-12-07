@@ -23,12 +23,12 @@ app.use(view(path.join(__dirname,'./server/views'),{
 }));
 app.use(routers.routes())
     .use(routers.allowedMethods());
-app.listen('3001',()=> {
+app.listen('3002',()=> {
     // console.log(myCipher("{'adf':打发第三方}"));//加密
     // myRandom(100000,5).then(result=>{
     //     console.log(result)
     // })//随机数
     //定时任务
     scheduleProject.releaseToken();
-    console.log('正在监听'+ 3001)
+    console.log('正在监听'+ 3002)
 });
