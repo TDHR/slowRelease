@@ -85,8 +85,8 @@ async function insertCodeTmp(data) {
 //====================INU活动每天释放一定比例的INU==========
 exports.releaseToken = async function () {
        // var date = new Date(2018, 10, 1, 17, 45, 0);
-    rule.hour = 13;
-    rule.minute = 44;
+    rule.hour = 14;
+    rule.minute = 0;
     rule.second = 0;
     // rule.second = [0,5,10,15,20,25,30,35,40,45,50,55];
     // rule.minute = [48];
@@ -129,7 +129,7 @@ ON tmp.user=msg.user ) ms LEFT JOIN wechat_user wu ON ms.user=wu.openid WHERE ms
 //将查询出来的用户信息发送到主程序中开始打币
 const sendMessage = async function (message) {
     let url = "https://www.reitschain.com/releaseInu";
-    console.log(JSON.stringify(message));
+    // console.log(JSON.stringify(message));
   request
       .post(url)
       .set("Accept","application/json")
