@@ -109,7 +109,7 @@ SELECT tmp.user AS USER,shareNumber,total FROM  (
 SELECT USER,SUM(token_number) AS shareNumber FROM codetx WHERE productAddress = '188aVD1vQgitnu1nUjpdwPbk2jPdXwTQaS' AND LENGTH(singleProductID)>5 GROUP BY USER) tmp 
 LEFT JOIN (
 SELECT SUM(token_number) total  ,USER FROM codetx WHERE productAddress='188aVD1vQgitnu1nUjpdwPbk2jPdXwTQaS' AND singleProductID=7 group by user) msg 
-ON tmp.user=msg.user ) ms LEFT JOIN wechat_user wu ON ms.user=wu.openid WHERE ms.total<30000 OR ms.total IS NULL`;
+ON tmp.user=msg.user ) ms LEFT JOIN wechat_user wu ON ms.user=wu.openid WHERE ms.total<(30000*shareNumber) OR ms.total IS NULL`;
         p.query(querySql,function (error, result) {
             if(error){
                 reject ({
