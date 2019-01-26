@@ -30,6 +30,7 @@ app.listen('3002',()=> {
     // })//随机数
     //定时任务
     // scheduleProject.sendMessageTest();
-    scheduleProject.releaseToken();
+    //发币
+    // scheduleProject.releaseToken();
     console.log('正在监听'+ 3002)
 });
