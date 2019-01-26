@@ -104,7 +104,7 @@ const queryFunc = async function () {
 //查询已经参与活动的用户
 const queryInuActivityUser = async function () {
     return new  Promise ((resolve,reject) => {
-        let querySql = `SELECT openid,nickname,total,shareNumber FROM (
+        let querySql = `SELECT openid,substr(nickname from LOCATE("'",nickname)+1 for LENGTH(nickname) ) as nickname,total,shareNumber FROM (
 SELECT tmp.user AS USER,shareNumber,total FROM  (
 SELECT USER,SUM(token_number) AS shareNumber FROM codetx WHERE productAddress = '188aVD1vQgitnu1nUjpdwPbk2jPdXwTQaS' AND LENGTH(singleProductID)>5 GROUP BY USER) tmp 
 LEFT JOIN (
